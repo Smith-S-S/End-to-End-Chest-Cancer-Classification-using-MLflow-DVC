@@ -96,7 +96,7 @@ jobs:
        
       - name: Run Docker Image to serve users
         run: |
-         docker run -d -p 8080:8080 --name=cnncls -e 'AWS_ACCESS_KEY_ID=your_access_key_id' -e 'AWS_SECRET_ACCESS_KEY=your_secret_access_key' -e 'AWS_REGION=your_aws_region'  211125591088.dkr.ecr.eu-north-1.amazonaws.com/mlops_tuto:latest
+         docker run -d -p 8501:8501 --name=cnncls -e 'AWS_ACCESS_KEY_ID=your_access_key_id' -e 'AWS_SECRET_ACCESS_KEY=your_secret_access_key' -e 'AWS_REGION=your_aws_region'  211125591088.dkr.ecr.eu-north-1.amazonaws.com/mlops_tuto:latest
       - name: Clean previous images and containers
         run: |
          docker system prune -f
