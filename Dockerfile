@@ -1,22 +1,11 @@
-# Use the official Python image as the base image
-FROM python:3.9-slim
+FROM python:3.8-slim-buster
 
-# Set the working directory in the container
+RUN apt update -y && apt install awscli -y
 WORKDIR /app
 
-# Copy the requirements file to the working directory
-COPY requirements.txt .
+COPY . /app
+RUN pip install -r requirements.txt
 
-# Update package lists and install necessary packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    awscli \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the app.py file to the working directory
-COPY app.py .
 
 # Expose the port that the app will be running on
 EXPOSE 8501
