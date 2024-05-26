@@ -7,9 +7,13 @@ WORKDIR /app
 # Copy the requirements file to the working directory
 COPY requirements.txt .
 
-# Install the required dependencies
-RUN apt update -y && apt install -y awscLi && \
-    pip install --no-cache-dir -r requirements.txt
+# Update package lists and install necessary packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    awscli \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the app.py file to the working directory
 COPY app.py .
