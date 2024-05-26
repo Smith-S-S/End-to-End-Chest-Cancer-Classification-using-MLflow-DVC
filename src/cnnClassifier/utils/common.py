@@ -18,9 +18,10 @@ import base64
 1st one for if int means int it dont take str
 2nd one means (key.value) we can print
 """
+#box is a library that helps to convert dict to class attributes eg: box['key'] to box.key
 
-
-#this function helps to read yaml files
+#this function helps to read yaml files  
+#@ensure_annotations: helps to check the type of the data if ints means int it dont take str
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
